@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D Christmas Tree Music Visualizer</title>
+<style>
+  body {
+    margin: 0;
+    background: #0b0b0b;
+    overflow: hidden;
+  }
+  canvas {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<audio id="music" src="Jingle Bells Lofi.mp3" loop crossorigin="anonymous"></audio>
+
+<canvas id="canvas"></canvas>
+
+<script>
+  const music = document.getElementById("music");
+
+  // Start music on first click anywhere
+  document.addEventListener("click", () => {
+    music.play();
+  }, { once: true });
+</script>
+
+<script src="tree.js"></script>
+
+</body>
+</html>
