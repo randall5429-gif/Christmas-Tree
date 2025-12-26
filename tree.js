@@ -19,8 +19,6 @@ const TREE_HEIGHT = 280;
 const TREE_RADIUS = 140;
 const GARLAND_TURNS = 4;
 const PERSPECTIVE = 600;
-
-/* ---------- Garland Animation ---------- */
 const GARLAND_ANIMATION = { speed: 0.02, waveSpeed: 0.04, amplitude: 6 };
 
 /* ---------- State ---------- */
@@ -45,7 +43,6 @@ for (let i = 0; i < STAR_COUNT; i++) {
 
 /* ---------- Audio Setup ---------- */
 let audioCtx, analyser, dataArray, bufferLength;
-
 function initAudio() {
   if (audioCtx) return;
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -158,6 +155,6 @@ musicBtn.addEventListener("click", () => {
   if (!audioCtx) initAudio();
   audio.play().then(() => {
     if (audioCtx.state === "suspended") audioCtx.resume();
-    musicBtn.style.display = "none"; // hide button after play
+    musicBtn.style.display = "none";
   }).catch(err => console.error("Music play error:", err));
 });
