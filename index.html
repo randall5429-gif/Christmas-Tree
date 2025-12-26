@@ -8,29 +8,42 @@
     margin: 0;
     background: #0b0b0b;
     overflow: hidden;
+    font-family: sans-serif;
   }
   canvas {
     display: block;
+  }
+  #musicBtn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    font-size: 18px;
+    background: #ffd700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffd700;
+    color: black;
+    font-weight: bold;
+  }
+  #musicBtn:hover {
+    background: #ffc700;
   }
 </style>
 </head>
 <body>
 
-<audio id="music" src="music.mp3" loop crossorigin="anonymous"></audio>
-
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+  <source src="music.ogg" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
 <canvas id="canvas"></canvas>
-
-<script>
-  const music = document.getElementById("music");
-
-  // Start music on first click anywhere
-  document.addEventListener("click", () => {
-    music.play();
-  }, { once: true });
-</script>
+<button id="musicBtn">▶ Play Music</button>
 
 <script src="tree.js"></script>
 
 </body>
 </html>
-
