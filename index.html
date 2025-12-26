@@ -35,14 +35,36 @@
 </head>
 <body>
 
+<!-- Audio element -->
 <audio id="music" loop>
   <source src="music/music.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
+<!-- Canvas for 3D tree -->
 <canvas id="canvas"></canvas>
+
+<!-- Play/Pause button -->
 <button id="musicBtn">▶ Play Music</button>
 
+<!-- Your tree visualizer script -->
 <script src="tree.js"></script>
+
+<!-- Music control script -->
+<script>
+  const music = document.getElementById('music');
+  const musicBtn = document.getElementById('musicBtn');
+
+  musicBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicBtn.textContent = '⏸ Pause Music';
+    } else {
+      music.pause();
+      musicBtn.textContent = '▶ Play Music';
+    }
+  });
+</script>
+
 </body>
 </html>
