@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>3D Christmas Tree Music Visualizer</title>
-<style>
-  body {
-    margin: 0;
-    background: #0b0b0b;
-    overflow: hidden;
-    font-family: sans-serif;
-  }
-  canvas {
-    display: block;
-  }
-  #musicBtn {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 12px 24px;
-    font-size: 18px;
-    background: #ffd700;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #ffd700;
-    color: black;
-    font-weight: bold;
-  }
-  #musicBtn:hover {
-    background: #ffc700;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Christmas Tree Music Visualizer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(67, 123, 88, 0.26), transparent 34%),
+        linear-gradient(180deg, #071420 0%, #111827 48%, #090b12 100%);
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #musicBtn {
+      position: absolute;
+      left: 50%;
+      bottom: max(24px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      min-width: 156px;
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 240, 168, 0.82);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffe27a 0%, #f3b434 100%);
+      box-shadow: 0 0 18px rgba(255, 203, 77, 0.42), 0 12px 30px rgba(0, 0, 0, 0.34);
+      color: #1e1606;
+      cursor: pointer;
+      font: 800 16px/1 system-ui, sans-serif;
+      transition: transform 160ms ease, filter 160ms ease;
+    }
+
+    #musicBtn:hover {
+      filter: brightness(1.06);
+      transform: translateX(-50%) translateY(-1px);
+    }
+
+    #musicBtn:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.78);
+      outline-offset: 4px;
+    }
+  </style>
 </head>
 <body>
+  <audio id="music" loop>
+    <source src="music/music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-<!-- Audio element -->
-<audio id="music" loop>
-  <source src="music/music.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <canvas id="canvas"></canvas>
+  <button id="musicBtn" type="button">Play Music</button>
 
-<!-- Canvas for 3D tree -->
-<canvas id="canvas"></canvas>
-
-<!-- Play/Pause button -->
-<button id="musicBtn">▶ Play Music</button>
-
-<!-- Your tree visualizer script -->
-<script src="tree.js"></script>
-
-<!-- Music control script -->
-<script>
-  const music = document.getElementById('music');
-  const musicBtn = document.getElementById('musicBtn');
-
-  musicBtn.addEventListener('click', () => {
-    if (music.paused) {
-      music.play();
-      musicBtn.textContent = '⏸ Pause Music';
-    } else {
-      music.pause();
-      musicBtn.textContent = '▶ Play Music';
-    }
-  });
-</script>
-
+  <script src="tree.js"></script>
 </body>
 </html>
